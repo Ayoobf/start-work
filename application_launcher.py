@@ -4,40 +4,7 @@ import time
 import logging
 from pywinauto import Desktop
 
-
-def setup_logger():
-    logger = logging.getLogger("application_launcher")
-
-    log_level = getattr(logging, config.LOG_LEVEL.upper())
-    logger.setLevel(log_level)
-
-    # create log file
-    log_dir = os.path.dirname(config.LOG_FILE)
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
-
-    # create file handler
-    fh = logging.FileHandler(config.LOG_FILE)
-    fh.setLevel(log_level)
-
-    ch = logging.StreamHandler()
-    ch.setLevel(log_level)
-
-    # Create formatter and add it to the handlers
-    formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
-    fh.setFormatter(formatter)
-    ch.setFormatter(formatter)
-
-    # Add the handlers to the logger
-    logger.addHandler(fh)
-    logger.addHandler(ch)
-
-    return logger
-
-
-logger = setup_logger()
+logger = logging.getLogger("start_work")
 
 
 def is_process_running(process_name):
@@ -94,9 +61,3 @@ def launch_all_applications():
     launch_outlook()
     launch_edge()
     logger.info("Finished launching all applications")
-
-
-if __name__ == "__main__":
-    logger.info("Script started")
-    launch_all_applications()
-    logger.info("Script finished")
