@@ -11,8 +11,8 @@ EDGE_PATH = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 YOUTUBE_PLAYLIST_URL = "https://www.youtube.com/watch?v=jfKfPfyJRdk"
 WINDOW_POSITIONS = {}
 
-LAUNCH_DELAY = 3
-SETUP_DELAY = 5
+LAUNCH_DELAY = 5
+SETUP_DELAY = 20
 
 LOG_FILE = "logs/automation.log"
 LOG_LEVEL = "INFO"

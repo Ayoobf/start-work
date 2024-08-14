@@ -45,9 +45,10 @@ def setup_logger():
 logger = setup_logger()
 
 if __name__ == "__main__":
+    time.sleep(config.LAUNCH_DELAY)
     logger.info("Start Work script initiated")
     launch_all_applications()
-    time.sleep(20)
+    time.sleep(config.SETUP_DELAY)
     mov_all_windows()
     time.sleep(2)
     open_youtube()
