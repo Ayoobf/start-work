@@ -1,8 +1,8 @@
-import config
 import os
 import time
 import logging
 from pywinauto import Desktop
+from .utils.config_loader import load_config
 
 logger = logging.getLogger("start_work")
 
@@ -41,23 +41,31 @@ def launch_application(path: str, process_name: str, args: str = None):
         logger.error(f"Failed to launch {path}. Error: {str(e)}", exc_info=True)
 
 
-def launch_teams():
-    launch_application(config.TEAMS_UPDATE_PATH, "Teams", '--processStart "Teams.exe"')
+def launch_teams(config):
+    launch_application(config["paths"]["teams"], "Teams", '--processStart "Teams.exe"')
 
 
-def launch_outlook():
-    launch_application(config.OUTLOOK_PATH, "Outlook")
+def launch_outlook(config):
+    launch_application(config["paths"]["outlook"], "Outlook")
 
 
-def launch_edge():
-    launch_application(config.EDGE_PATH, "Edge")
+def launch_edge(config):
+    launch_application(config["paths"]["edge"], "Edge")
 
 
-def launch_all_applications():
+def launch_all_applications(config):
     logger.info("Starting to launch all applications")
-    launch_teams()
+    launch_teams(config)
     logger.debug("Waiting 2 seconds after launching Teams")
     time.sleep(2)  # Give Teams a moment to start
-    launch_outlook()
-    launch_edge()
+    launch_outlook(config)
+    launch_edge(config)
     logger.info("Finished launching all applications")
+
+
+if __name__ == "__main__":
+    # This block is for testing purposes
+    from src.utils.config_loader import load_config
+
+    config = load_config()
+    launch_all_applications(config)

@@ -1,0 +1,51 @@
+
+# Application paths
+paths:
+  teams: "C:\\Users\\af940\\AppData\\Local\\Microsoft\\Teams\\Update.exe"
+  outlook: "C:\\Program Files\\Microsoft Office\\root\\Office16\\OUTLOOK.EXE"
+  edge: "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+
+# YouTube playlist URL
+youtube:
+  playlist_url: "https://www.youtube.com/watch?v=jfKfPfyJRdk"
+  alternative_playlists:
+    - "https://www.youtube.com/watch?v=5qap5aO4i9A"
+    - "https://www.youtube.com/watch?v=DWcJFNfaw9c"
+
+# Window positions
+window_positions:
+  teams:
+    position:
+      x: -1927
+      y: 394
+      width: 974
+      height: 1087
+  outlook:
+    position:
+      x: -967
+      y: 394
+      width: 974
+      height: 1087
+  edge:
+    position:
+      x: 900
+      y: 100
+      width: 1920
+      height: 1080
+
+# Delay settings (in seconds)
+delays:
+  launch: 3
+  setup: 1
+
+# Logging configuration
+logging:
+  file: "logs/automation.log"
+  level: "INFO"
+  max_size: 5242880  # 5 MB
+  backup_count: 3
+
+# Feature flags
+features:
+  use_random_playlist: false
+  enable_gui: false
