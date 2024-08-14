@@ -2,6 +2,7 @@ import logging
 import os
 import config
 from application_launcher import launch_all_applications
+from window_manager import mov_all_windows
 
 
 def setup_logger():
@@ -44,4 +45,5 @@ logger = setup_logger()
 if __name__ == "__main__":
     logger.info("Start Work script initiated")
     launch_all_applications()
+    mov_all_windows()
     logger.info("Start Work script completed")
