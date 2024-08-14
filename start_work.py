@@ -3,6 +3,7 @@ import os
 import config
 from application_launcher import launch_all_applications
 from window_manager import mov_all_windows
+from youtube_controller import open_youtube
 import time
 
 
@@ -48,4 +49,6 @@ if __name__ == "__main__":
     launch_all_applications()
     time.sleep(20)
     mov_all_windows()
+    time.sleep(2)
+    open_youtube()
     logger.info("Start Work script completed")
