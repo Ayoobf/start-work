@@ -36,7 +36,7 @@ window_positions:
 # Delay settings (in seconds)
 delays:
   launch: 3
-  setup: 1
+  setup: 20
 
 # Logging configuration
 logging:
