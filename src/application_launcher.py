@@ -28,7 +28,7 @@ def is_process_running(process_name):
 def launch_application(path: str, process_name: str, args: str = None):
     if is_process_running(process_name):
         logger.info(f"{process_name} is already running. Skipping launch.")
-        return
+        return False
 
     try:
         command = f'start "" "{path}"'
@@ -37,30 +37,39 @@ def launch_application(path: str, process_name: str, args: str = None):
         logger.debug(f"Executing command: {command}")
         os.system(command)
         logger.info(f"Launched: {path}")
+        return True
     except Exception as e:
         logger.error(f"Failed to launch {path}. Error: {str(e)}", exc_info=True)
+        return False
 
 
 def launch_teams(config):
-    launch_application(config["paths"]["teams"], "Teams", '--processStart "Teams.exe"')
+    return launch_application(
+        config["paths"]["teams"], "Teams", '--processStart "Teams.exe"'
+    )
 
 
 def launch_outlook(config):
-    launch_application(config["paths"]["outlook"], "Outlook")
+    return launch_application(config["paths"]["outlook"], "Outlook")
 
 
 def launch_edge(config):
-    launch_application(config["paths"]["edge"], "Edge")
+    return launch_application(config["paths"]["edge"], "Edge")
 
 
 def launch_all_applications(config):
     logger.info("Starting to launch all applications")
-    launch_teams(config)
+    apps_launched = False
+
+    apps_launched |= launch_teams(config)
     logger.debug("Waiting 2 seconds after launching Teams")
     time.sleep(2)  # Give Teams a moment to start
-    launch_outlook(config)
-    launch_edge(config)
+
+    apps_launched |= launch_outlook(config)
+    apps_launched |= launch_edge(config)
+
     logger.info("Finished launching all applications")
+    return apps_launched
 
 
 if __name__ == "__main__":

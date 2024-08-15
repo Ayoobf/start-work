@@ -17,7 +17,7 @@ def mov_edge_window():
         return
 
     logger.info("edge is not maximized. resizing now")
-    edge_window.moveTo(900, 100)  # move to first monitor
+    edge_window.moveTo(1080, 100)  # move to first monitor
     edge_window.maximize()
     logger.info("edge has been resized")
 

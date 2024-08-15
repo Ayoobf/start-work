@@ -14,8 +14,16 @@ def main():
 
     time.sleep(config["delays"]["launch"])
     logger.info("Start Work script initiated")
-    launch_all_applications(config)
-    time.sleep(config["delays"]["setup"])
+    apps_launched = launch_all_applications(config)
+
+    if apps_launched:
+        logger.info(
+            f"Waiting {config['delays']['setup']} seconds for applications to start up"
+        )
+        time.sleep(config["delays"]["setup"])
+    else:
+        logger.info("All applications were already running, skipping setup delay")
+
     mov_all_windows()
     time.sleep(2)
     open_youtube(config)
