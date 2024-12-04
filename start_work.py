@@ -24,7 +24,7 @@ def main():
     else:
         logger.info("All applications were already running, skipping setup delay")
 
-    mov_all_windows()
+    mov_all_windows(config=config)
     time.sleep(2)
     open_youtube(config)
     logger.info("Start Work script completed")
